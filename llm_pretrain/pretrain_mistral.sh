@@ -2,7 +2,7 @@
 
 echo ===== PRETRAINING =====
 # Node that MODEL_PATH can be local folder path
-MODEL_PATH=/home/reacubeth/models/mistralai/Mistral-7B-v0.1
+MODEL_PATH=mistralai/Mistral-7B-v0.1
 TITLE=mistral-7b-v0.1-pretrain
 DATA=data
 
@@ -12,7 +12,7 @@ mkdir $OUTPUT_DIR
 echo ===== current OUTPUT_DIR is $OUTPUT_DIR =====
 echo ===== MODEL_PATH is $MODEL_PATH =====
 
-torchrun --nproc_per_node=4 --master_port=9919 pretrain.py \
+torchrun --nproc_per_node=8 --master_port=9919 pretrain.py \
     --model_name_or_path $MODEL_PATH \
     --data_path $DATA \
     --bf16 True \
